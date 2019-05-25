@@ -1,8 +1,40 @@
 import numpy as np
 
-
+#hardcoded values
 centroids = np.array([[1, 1], [ 5, 7] , [3.5,4.5 ]])
-points = np.array([ [1, 1], [1.5, 2] ,[3, 4] , [5, 7] , [3.5, 5] , [4.5, 5] , [3.5, 4.5]])
+#points = np.array([ [1, 1], [1.5, 2] ,[3, 4] , [5, 7] , [3.5, 5] , [4.5, 5] , [3.5, 4.5]])
+
+points = []
+
+#load from file
+file_in = open('datapoints.txt', 'r')
+a = file_in.readlines()
+
+num_points = int(a[0])
+
+for i in range(1,num_points+1):
+	c= float( a[i].split()[0] )
+	d= float ( a[i].split()[1] )
+	points.append( list( (c,d ) ) )
+
+points = np.array(points)
+#print(points)
+#print(num_points)
+#print(list( (a,b) ))
+#for y in file_in.readlines():
+#	(a,b) = 
+
+num_cen = int(a[num_points+1])
+
+for i in range(num_points+2,num_cen+1):
+	c= float( a[i].split()[0] )
+	d= float ( a[i].split()[1] )
+	centroids.append( list( (c,d ) ) )
+
+centroids = np.array(centroids)
+
+
+#######3 END READING FROM FILE
 
 point_centroid = {} #blank dict
 for index_p , p in enumerate(points):
