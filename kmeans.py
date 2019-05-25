@@ -40,7 +40,18 @@ for index_p , p in enumerate(points):
 print(point_centroid)
 
 #calculate new centroids
-#1. delete all previous
+#1. delete previous
 #2. add new
+for index_c , c in enumerate(centroids):
+	 
+	temp_list = []
+	#if this point belongs to this centroid, then use it to update the position of this centroid
+	for x in point_centroid:
+		if point_centroid[x] == index_c: 
+			temp_list.append(list(x))
 
-	
+	avg = np.mean(temp_list , axis=0)
+	print("new centroid" , avg)
+	pass
+
+
